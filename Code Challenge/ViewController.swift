@@ -17,12 +17,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         view.addSubview(mainViewHolder)
-        mainViewHolder.centerXToSuperview()
         mainViewHolder.centerX(to: view)
         mainViewHolder.centerY(to: view)
-        mainViewHolder.height(300)
-        mainViewHolder.height(300)
-        
         mainViewHolder.creditScore.text = "200"
         mainViewHolder.creditPossibleLabel.text = "out of 700"
         

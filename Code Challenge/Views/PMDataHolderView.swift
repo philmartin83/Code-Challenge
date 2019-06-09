@@ -12,6 +12,8 @@ import TinyConstraints
 
 class PMDataHolderView: UIView{
 
+    //MARK:- Properties
+    
     var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
@@ -39,6 +41,7 @@ class PMDataHolderView: UIView{
         return label
     }()
     
+    //MARK:- Initalisers
     init(){
         super.init(frame: .zero)
         setupBackgroundView()
@@ -48,35 +51,44 @@ class PMDataHolderView: UIView{
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK:= View Setup
     func setupBackgroundView()  {
-        self.height(220)
-        self.width(220)
-//       itleLabel.top(to: self, offset: 10) self.layer.cornerRadius = 300 / 2
-        self.clipsToBounds = true
+        self.height(300)
+        self.width(300)
+        self.layer.cornerRadius = 300 / 2
+        self.layer.borderWidth = 2
+        self.layer.borderColor = UIColor.black.cgColor
         setupView()
     }
     
     func setupView(){
         self.addSubview(titleLabel)
-        titleLabel.top(to: self, offset: 10)
+        titleLabel.top(to: self, offset: 70)
         titleLabel.centerX(to: self)
         titleLabel.height(50)
         titleLabel.width(280)
         
         self.addSubview(creditScore)
-        creditScore.bottom(to: titleLabel, offset: 150)
+        creditScore.topToBottom(of: titleLabel, offset: -20)//(to: titleLabel, offset: 100)
         creditScore.centerX(to: self)
         creditScore.width(300)
         creditScore.height(130)
         
         self.addSubview(creditPossibleLabel)
-        creditPossibleLabel.bottom(to: creditScore, offset: 50)
+        creditPossibleLabel.topToBottom(of: creditScore, offset: -20)
         creditPossibleLabel.centerX(to: self)
-        titleLabel.top(to:
-            creditPossibleLabel, offset: 10)
         creditPossibleLabel.width(150)
         creditPossibleLabel.height(50)
     
+    }
+    
+    func circleProgress(){
+        let shapeLayer = CAShapeLayer()
+        let circularPath = UIBezierPath(arcCenter: self.center, radius: 100, startAngle: 0, endAngle: CGFloat.pi, clockwise: true)
+        shapeLayer.path = circularPath.cgPath
+        
+        self.layer.addSublayer(shapeLAyer)
+        
     }
 }
 
