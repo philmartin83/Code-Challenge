@@ -7,13 +7,32 @@
 //
 
 import UIKit
+import TinyConstraints
 
 class ViewController: UIViewController {
+    
+    let mainViewHolder = PMDataHolderView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
- 
+        view.addSubview(mainViewHolder)
+        mainViewHolder.centerXToSuperview()
+        mainViewHolder.centerX(to: view)
+        mainViewHolder.centerY(to: view)
+        mainViewHolder.height(300)
+        mainViewHolder.height(300)
+        
+        mainViewHolder.creditScore.text = "200"
+        mainViewHolder.creditPossibleLabel.text = "out of 700"
+        
+        PMAPiRequestHandler().getCreditInfo(viewcontroller: self) { [weak self] (base, error) in
+            
+            // handle retain cycles
+            if let weakSelf = self{
+                print(base)
+            }
+        }
     }
 }
 

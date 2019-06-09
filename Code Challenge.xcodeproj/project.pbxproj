@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1C122F463A4B200152475A14 /* Pods_Code_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5E2AFB008FEA63E514F2E7 /* Pods_Code_Challenge.framework */; };
 		3A15294390AF13175AE02CAA /* Pods_Code_ChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA26D7F69B3A88547AAFDEF0 /* Pods_Code_ChallengeTests.framework */; };
+		4A05580222AD89A000927D36 /* PMDataHolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A05580122AD89A000927D36 /* PMDataHolderView.swift */; };
 		4A9E6C2F22AAEF000053A693 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C2E22AAEF000053A693 /* AppDelegate.swift */; };
 		4A9E6C3122AAEF000053A693 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C3022AAEF000053A693 /* ViewController.swift */; };
 		4A9E6C3422AAEF000053A693 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A9E6C3222AAEF000053A693 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 		0E9696D02086C7F1011B4BCC /* Pods-Code ChallengeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Code ChallengeTests.debug.xcconfig"; path = "Target Support Files/Pods-Code ChallengeTests/Pods-Code ChallengeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		24626FCD942AE8AD1AFCB392 /* Pods-Code Challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Code Challenge.debug.xcconfig"; path = "Target Support Files/Pods-Code Challenge/Pods-Code Challenge.debug.xcconfig"; sourceTree = "<group>"; };
 		2F5E2AFB008FEA63E514F2E7 /* Pods_Code_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Code_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A05580122AD89A000927D36 /* PMDataHolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMDataHolderView.swift; sourceTree = "<group>"; };
 		4A9E6C2B22AAEF000053A693 /* Code Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Code Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A9E6C2E22AAEF000053A693 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A9E6C3022AAEF000053A693 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 		4A9E6C6022AAFC670053A693 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4A05580122AD89A000927D36 /* PMDataHolderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -166,7 +169,6 @@
 				0E9696D02086C7F1011B4BCC /* Pods-Code ChallengeTests.debug.xcconfig */,
 				93053E5D550EE23F73428E12 /* Pods-Code ChallengeTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -354,6 +356,7 @@
 				4A9E6C5122AAEF280053A693 /* PMAPiRequestHandler.swift in Sources */,
 				4A9E6C5C22AAF3260053A693 /* CoachingSummary.swift in Sources */,
 				4A9E6C2F22AAEF000053A693 /* AppDelegate.swift in Sources */,
+				4A05580222AD89A000927D36 /* PMDataHolderView.swift in Sources */,
 				4A9E6C5B22AAF3260053A693 /* BaseModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
