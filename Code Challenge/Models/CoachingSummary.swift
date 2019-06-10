@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 struct CoachingSummary : Codable {
 	let activeTodo : Bool?
 	let activeChat : Bool?

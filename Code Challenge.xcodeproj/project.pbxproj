@@ -22,6 +22,11 @@
 		4A9E6C5B22AAF3260053A693 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C5822AAF3260053A693 /* BaseModel.swift */; };
 		4A9E6C5C22AAF3260053A693 /* CoachingSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C5922AAF3260053A693 /* CoachingSummary.swift */; };
 		4A9E6C5F22AAF43C0053A693 /* PMAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C5E22AAF43C0053A693 /* PMAlertViewController.swift */; };
+		FF1C81E122AE5F9600E8307A /* PMCountingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1C81E022AE5F9600E8307A /* PMCountingLabel.swift */; };
+		FF1C81E322AE91E200E8307A /* PMTestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1C81E222AE91E200E8307A /* PMTestAPI.swift */; };
+		FF1C81E522AEAEEE00E8307A /* PMActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1C81E422AEAEEE00E8307A /* PMActivity.swift */; };
+		FF1C81E822AEB0E900E8307A /* PMDataLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1C81E722AEB0E900E8307A /* PMDataLayer.swift */; };
+		FF1C81EA22AEB7D900E8307A /* PMCodingChallengeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1C81E922AEB7D900E8307A /* PMCodingChallengeConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +63,11 @@
 		527AA6B43E1886EC3C2409F4 /* Pods-Code Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Code Challenge.release.xcconfig"; path = "Target Support Files/Pods-Code Challenge/Pods-Code Challenge.release.xcconfig"; sourceTree = "<group>"; };
 		93053E5D550EE23F73428E12 /* Pods-Code ChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Code ChallengeTests.release.xcconfig"; path = "Target Support Files/Pods-Code ChallengeTests/Pods-Code ChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 		FA26D7F69B3A88547AAFDEF0 /* Pods_Code_ChallengeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Code_ChallengeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF1C81E022AE5F9600E8307A /* PMCountingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMCountingLabel.swift; sourceTree = "<group>"; };
+		FF1C81E222AE91E200E8307A /* PMTestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMTestAPI.swift; sourceTree = "<group>"; };
+		FF1C81E422AEAEEE00E8307A /* PMActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMActivity.swift; sourceTree = "<group>"; };
+		FF1C81E722AEB0E900E8307A /* PMDataLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMDataLayer.swift; sourceTree = "<group>"; };
+		FF1C81E922AEB7D900E8307A /* PMCodingChallengeConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMCodingChallengeConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,8 +113,10 @@
 		4A9E6C2D22AAEF000053A693 /* Code Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				FF1C81EB22AEBA2F00E8307A /* Constants */,
+				FF1C81E622AEB0D900E8307A /* Datalayer */,
+				FF1C81DF22AE5F7100E8307A /* Sub Classes */,
 				4A9E6C6022AAFC670053A693 /* Views */,
-				4A9E6C5D22AAF4240053A693 /* AlertView */,
 				4A9E6C5622AAF2AF0053A693 /* Models */,
 				4A9E6C4F22AAEF0E0053A693 /* Request Handler */,
 				4A9E6C2E22AAEF000053A693 /* AppDelegate.swift */,
@@ -122,6 +134,7 @@
 			children = (
 				4A9E6C4322AAEF020053A693 /* Code_ChallengeTests.swift */,
 				4A9E6C4522AAEF020053A693 /* Info.plist */,
+				FF1C81E222AE91E200E8307A /* PMTestAPI.swift */,
 			);
 			path = "Code ChallengeTests";
 			sourceTree = "<group>";
@@ -156,6 +169,8 @@
 		4A9E6C6022AAFC670053A693 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4A9E6C5D22AAF4240053A693 /* AlertView */,
+				FF1C81E422AEAEEE00E8307A /* PMActivity.swift */,
 				4A05580122AD89A000927D36 /* PMDataHolderView.swift */,
 			);
 			path = Views;
@@ -179,6 +194,30 @@
 				FA26D7F69B3A88547AAFDEF0 /* Pods_Code_ChallengeTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FF1C81DF22AE5F7100E8307A /* Sub Classes */ = {
+			isa = PBXGroup;
+			children = (
+				FF1C81E022AE5F9600E8307A /* PMCountingLabel.swift */,
+			);
+			path = "Sub Classes";
+			sourceTree = "<group>";
+		};
+		FF1C81E622AEB0D900E8307A /* Datalayer */ = {
+			isa = PBXGroup;
+			children = (
+				FF1C81E722AEB0E900E8307A /* PMDataLayer.swift */,
+			);
+			path = Datalayer;
+			sourceTree = "<group>";
+		};
+		FF1C81EB22AEBA2F00E8307A /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				FF1C81E922AEB7D900E8307A /* PMCodingChallengeConstants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,7 +388,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF1C81E822AEB0E900E8307A /* PMDataLayer.swift in Sources */,
 				4A9E6C5322AAF01D0053A693 /* PMRequest.swift in Sources */,
+				FF1C81E522AEAEEE00E8307A /* PMActivity.swift in Sources */,
 				4A9E6C5A22AAF3260053A693 /* CreditReportInfo.swift in Sources */,
 				4A9E6C5F22AAF43C0053A693 /* PMAlertViewController.swift in Sources */,
 				4A9E6C3122AAEF000053A693 /* ViewController.swift in Sources */,
@@ -357,6 +398,8 @@
 				4A9E6C5C22AAF3260053A693 /* CoachingSummary.swift in Sources */,
 				4A9E6C2F22AAEF000053A693 /* AppDelegate.swift in Sources */,
 				4A05580222AD89A000927D36 /* PMDataHolderView.swift in Sources */,
+				FF1C81EA22AEB7D900E8307A /* PMCodingChallengeConstants.swift in Sources */,
+				FF1C81E122AE5F9600E8307A /* PMCountingLabel.swift in Sources */,
 				4A9E6C5B22AAF3260053A693 /* BaseModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,6 +409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A9E6C4422AAEF020053A693 /* Code_ChallengeTests.swift in Sources */,
+				FF1C81E322AE91E200E8307A /* PMTestAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

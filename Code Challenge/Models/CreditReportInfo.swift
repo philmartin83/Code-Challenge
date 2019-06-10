@@ -7,6 +7,8 @@
 //
 
 import Foundation
+
+// for this demo not all the properties are needed
 struct CreditReportInfo : Codable {
 	let score : Int?
 	let scoreBand : Int?

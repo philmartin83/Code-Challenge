@@ -12,23 +12,17 @@ import TinyConstraints
 class ViewController: UIViewController {
     
     let mainViewHolder = PMDataHolderView()
-
+    let dataLayer = PMDataLayer()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        title = "Dashboard"
+        // set the status bar to light so the status bar doesn't clash with our black nav bar!
+        navigationController?.navigationBar.barStyle = .black
         view.addSubview(mainViewHolder)
         mainViewHolder.centerX(to: view)
         mainViewHolder.centerY(to: view)
-        mainViewHolder.creditScore.text = "200"
-        mainViewHolder.creditPossibleLabel.text = "out of 700"
-        
-        PMAPiRequestHandler().getCreditInfo(viewcontroller: self) { [weak self] (base, error) in
-            
-            // handle retain cycles
-            if let weakSelf = self{
-                print(base)
-            }
-        }
+        dataLayer.bindDataToView(viewController: self, mainViewHolder: mainViewHolder)
     }
 }
 

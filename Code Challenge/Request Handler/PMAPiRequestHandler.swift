@@ -13,7 +13,7 @@ class PMAPiRequestHandler{
     
     //MARK:- Constant
     let alert = PMAlertViewController()
-    let alertTitle = "Error" //  set a constant here so its easier to change in one plaxe then hunting for it ebverywhere
+    let alertTitle = "Error" //  set a constant here so its easier to change in one plaxe then hunting for it everywhere
     
     func getCreditInfo(viewcontroller: UIViewController, completion: @escaping ((BaseModel?, Error?)-> ())){
         // both items in this completion are optional so I can handle the errors in the viewcontroller
@@ -32,36 +32,28 @@ class PMAPiRequestHandler{
                             completion(base, nil)
                         }catch{
                             // catch the error and present the alert
-                            self.serverError(viewController: viewcontroller, body: error.localizedDescription)
+                            self.alert.serverError(viewController: viewcontroller, body: error.localizedDescription, title: self.alertTitle)
                             completion(nil, error)
                         }
                        
                     }else{
                         // we end up here if the unwrapped data fails in other words its nil
                         let messge = "Inalid data from the server"
-                        self.serverError(viewController: viewcontroller, body: messge)
+                        self.alert.serverError(viewController: viewcontroller, body: messge, title: self.alertTitle)
                         completion(nil, error)
                     }
                 }else{
                     // we end up here if the response status code fromt eh server is a 400, 404 or any other status code SAD TIMEs :(
                     let messge = "\(error?.localizedDescription ?? "") \nStatus: \(httpResponse.statusCode)"
-                    self.serverError(viewController: viewcontroller, body: messge)
+                    self.alert.serverError(viewController: viewcontroller, body: messge, title: self.alertTitle)
                     completion(nil, error)
                 }
             }else{
-                // we end up here if evberything has gone totally wrong//// in this instance maybe we should crash and report back using a tool like Crashlytics or Rollbar
+                // we end up here if everything has gone totally wrong!!! in this instance maybe we should crash and report back using a tool like Crashlytics or Rollbar
                 let message = "Invalid response code"
-                self.serverError(viewController: viewcontroller, body: message)
+                self.alert.serverError(viewController: viewcontroller, body: message, title: self.alertTitle)
                 completion(nil, error)
             }
-        }
+        }.resume()
     }
-    
-    // MARK:- Helper
-    func serverError(viewController: UIViewController, body: String){
-        // one place to present the alert again put here so ew don't have to hun for it.
-        // could probably be placed in the PMAlertViewController class for consistency
-        viewController.present(self.alert.presentAlert(title: self.alertTitle, body: body), animated: true, completion: nil)
-    }
-    
 }
