@@ -11,13 +11,6 @@ import XCTest
 
 class Code_ChallengeTests: XCTestCase {
     let alert = PMAlertViewController()
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
     
     func testFunctionalAlert(){
         let result = alert.presentAlert(title: "Error", body: "message body")
@@ -29,6 +22,18 @@ class Code_ChallengeTests: XCTestCase {
         let badResult = alert.presentAlert(title: "Error", body: nil)
         XCTAssertEqual(badResult.message, nil)
         
+        let vc = UIViewController()
+        let testServerError = PMAlertViewController()
+        testServerError.serverError(viewController: vc, body: "Some error", title: "hello error")
+        XCTAssertNil(testServerError.message)
+        XCTAssertNil(testServerError.title)
+    }
+    
+    func testDataHolderViewTitleClosure(){
+        let title = PMDataHolderView()
+        XCTAssertEqual(title.titleLabel.text, "Your credit score is")
+        title.circleProgress(value: 20)
+        XCTAssertEqual(title.progress, 20)
     }
     
     func testBindingOfData(){
@@ -37,6 +42,13 @@ class Code_ChallengeTests: XCTestCase {
         let dataBind = PMDataLayer()
         dataBind.bindDataToView(viewController: vc, mainViewHolder: holderView)
         XCTAssertNotNil(holderView.titleLabel)
+    }
+    
+    func testActivty(){
+        let activity = PMActivity()
+        activity.setupView(txt: "value")
+        activity.dismissActivityView()
+        XCTAssertEqual(activity.messageLabel.text, "value")
     }
     
     func testCustomLabel(){

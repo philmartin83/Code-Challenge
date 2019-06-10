@@ -22,3 +22,7 @@ let creditScoreTextColour = #colorLiteral(red: 1, green: 0.7277173941, blue: 0.0
 //MARK:- AlertViewController Titles
 let errorAlertTitle = "Error"
 let okButtonAlertTitle = "OK"
+let errorFetchingFromServer = "Error fetching data from server"
+
+//MARK:- Base URL
+let baseurl = "https://5lfoiyb0b3.execute-api.us-west-2.amazonaws.com"

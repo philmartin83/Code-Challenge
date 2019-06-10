@@ -72,5 +72,11 @@ class PMActivity: UIView{
         // call this to stop
         activityIndicator.stopAnimating()
     }
+    
+    //MARK:- Dismiss
+    func dismissActivityView() {
+        stopActivity()
+        self.removeFromSuperview()
+    }
 }
 

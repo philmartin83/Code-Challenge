@@ -14,6 +14,8 @@ class PMDataLayer {
     //MARK:- Properties
     let alert = PMAlertViewController()
     var activity = PMActivity()
+    
+    //MARK:- Helper
     func bindDataToView(viewController: UIViewController, mainViewHolder: PMDataHolderView){
         
         // only add the activity if we can unwrap the navigation controller else just continue.
@@ -32,7 +34,10 @@ class PMDataLayer {
             if let weakSelf = self{
                 if error != nil{
                     DispatchQueue.main.async {
-                        viewController.present(weakSelf.alert.presentAlert(title: errorAlertTitle, body: error?.localizedDescription), animated: true, completion: nil)
+                        // present the relevant alert
+                        weakSelf.alert.serverError(viewController: viewController, body: error?.localizedDescription, title: errorAlertTitle)
+                        // clean up the activity view
+                        weakSelf.activity.dismissActivityView()
                     }
                     return
                 }
@@ -46,32 +51,29 @@ class PMDataLayer {
                             // call the count function on the custom label to increment the counter to the given value from the API
                             mainViewHolder.creditScore.count(fromValue: 1, to: castScoreToFloat, withDuration: TimeInterval(animationDuration), withAnimationType: .EaseOut, withCounterType: .Int)
                             
-                            // now to add our progress indicator
-                            
+                            // now to add our progress indicator values
                             let progressIndicator =  maxScore / mainCreditScore
                             mainViewHolder.circleProgress(value: Float(progressIndicator))
                             
                             // set the total value from the credit score
                             mainViewHolder.creditPossibleLabel.text = "out of \(maxScore)"
+                            
                         }else{
-                           viewController.present(weakSelf.alert.presentAlert(title: errorAlertTitle, body: "Error fetching data from server"), animated: true, completion: nil)
+                           weakSelf.alert.serverError(viewController: viewController, body: errorFetchingFromServer, title: errorAlertTitle)
                         }
-                        
                     }
                     
                 }else{
                     // get back to the main thread to present our alert
                     DispatchQueue.main.async { 
-                        viewController.present(weakSelf.alert.presentAlert(title: errorAlertTitle, body: error?.localizedDescription), animated: true, completion: nil)
+                        weakSelf.alert.serverError(viewController: viewController, body: error?.localizedDescription, title: errorAlertTitle)
                     }
                 }
                 
                 // return to the main thread to clean up the activity inidicator
                 DispatchQueue.main.async {
-                    // stop the acitvity indicator spinning
-                    weakSelf.activity.stopActivity()
-                    // remove our acitivty inidcator
-                    weakSelf.activity.removeFromSuperview()
+                    // clean up the activity view
+                    weakSelf.activity.dismissActivityView()
                 }
             }
         }

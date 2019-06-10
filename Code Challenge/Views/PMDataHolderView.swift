@@ -14,11 +14,12 @@ class PMDataHolderView: UIView{
 
     //MARK:- Properties
     let shapeLayer = CAShapeLayer()
+    var progress: Float?
 
     var titleLabel: UILabel = {
         let label = UILabel()
         label.font = boldFont
-        label.text = "You're credit score is"
+        label.text = "Your credit score is"
         label.textColor = .black
         label.numberOfLines = 0 // set this to 0 just incase small devices reqire multiple lines
         label.textAlignment = .center
@@ -88,6 +89,10 @@ class PMDataHolderView: UIView{
     }
     
     func circleProgress(value: Float){
+        
+        // set the progress based on the value passed into this function
+        progress = value
+        
         // find the center of our custom view by using the midX and midY properties
         let center = CGPoint(x: bounds.midX, y: bounds.midY)
 
@@ -106,14 +111,14 @@ class PMDataHolderView: UIView{
         shapeLayer.strokeEnd = 0
         // add our sublayer and get animating!
         self.layer.addSublayer(shapeLayer)
-        animateCircleBasedOnCreditScore(value: value)
+        animateCircleBasedOnCreditScore()
         
     }
     
-    fileprivate func animateCircleBasedOnCreditScore(value: Float) {
+    fileprivate func animateCircleBasedOnCreditScore() {
         // create our keypath set our keypath
         let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
-        basicAnimation.toValue = value
+        basicAnimation.toValue = progress
         basicAnimation.duration = CFTimeInterval(animationDuration)
         // set the ease out to match the number incremetation
         basicAnimation.timingFunction = CAMediaTimingFunction(name: .easeOut)
