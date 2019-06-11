@@ -16,7 +16,7 @@ class PMAPiRequestHandler{
     
     func getCreditInfo(viewcontroller: UIViewController, completion: @escaping ((BaseModel?, Error?)-> ())){
         // both items in this completion are optional so I can handle the errors in the viewcontroller
-        
+        // you can just use the dataTask(with: <url>) here but most requests need stuff added to the body or heades for security so I always use (with: URLRequest)
         URLSession.shared.dataTask(with: PMRequest().creditRequest()) { (data, response, error) in
             // here I cast the response and unwrap to check the status code
             if let httpResponse = response as? HTTPURLResponse {
