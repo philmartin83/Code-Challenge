@@ -49,8 +49,7 @@ class PMAPiRequestHandler{
                 }
             }else{
                 // we end up here if everything has gone totally wrong!!! in this instance maybe we should crash and report back using a tool like Crashlytics or Rollbar
-                let message = "Request timed out."
-                self.alert.serverError(viewController: viewcontroller, body: message, title: errorAlertTitle)
+                self.alert.serverError(viewController: viewcontroller, body: error?.localizedDescription, title: errorAlertTitle)
                 completion(nil, error)
             }
         }.resume()
