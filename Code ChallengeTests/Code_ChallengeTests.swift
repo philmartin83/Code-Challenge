@@ -38,9 +38,8 @@ class Code_ChallengeTests: XCTestCase {
     
     func testBindingOfData(){
         let holderView = PMDataHolderView()
-        let vc = UIViewController()
         let dataBind = PMDataLayer()
-        dataBind.bindDataToView(viewController: vc, mainViewHolder: holderView)
+        dataBind.bindDataToView()
         XCTAssertNotNil(holderView.titleLabel)
     }
     
@@ -64,9 +63,8 @@ class Code_ChallengeTests: XCTestCase {
     }
     
     func testRequest(){
-        let viewController = UIViewController()
         let expectation = XCTestExpectation.init(description: "Successful Response")
-        PMAPiRequestHandler().getCreditInfo(viewcontroller: viewController) { (base, error) in
+        PMAPiRequestHandler().getCreditInfo() { (base, error) in
             
             if error != nil{
                 XCTFail("Test failed")

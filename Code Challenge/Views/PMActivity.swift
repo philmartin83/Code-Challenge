@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import TinyConstraints
 
-class PMActivity: UIView{
+class PMActivity: UIView, ViewProtocol{
     
     //MARK:- Properties
     var activityIndicator: UIActivityIndicatorView = {
@@ -27,8 +27,6 @@ class PMActivity: UIView{
         return message
     }()
     
-    var viewcontroller: UIViewController?
-
     //MARK:- Initaliser
     init() {
         super.init(frame: .zero)

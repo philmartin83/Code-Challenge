@@ -22,6 +22,8 @@
 		4A9E6C5B22AAF3260053A693 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C5822AAF3260053A693 /* BaseModel.swift */; };
 		4A9E6C5C22AAF3260053A693 /* CoachingSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C5922AAF3260053A693 /* CoachingSummary.swift */; };
 		4A9E6C5F22AAF43C0053A693 /* PMAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C5E22AAF43C0053A693 /* PMAlertViewController.swift */; };
+		FF18C44222BCF9CC00452B32 /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF18C44122BCF9CC00452B32 /* RequestProtocol.swift */; };
+		FF18C44422BCFA4500452B32 /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF18C44322BCFA4500452B32 /* ViewProtocol.swift */; };
 		FF1C81E122AE5F9600E8307A /* PMCountingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1C81E022AE5F9600E8307A /* PMCountingLabel.swift */; };
 		FF1C81E322AE91E200E8307A /* PMTestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1C81E222AE91E200E8307A /* PMTestAPI.swift */; };
 		FF1C81E522AEAEEE00E8307A /* PMActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1C81E422AEAEEE00E8307A /* PMActivity.swift */; };
@@ -63,6 +65,8 @@
 		527AA6B43E1886EC3C2409F4 /* Pods-Code Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Code Challenge.release.xcconfig"; path = "Target Support Files/Pods-Code Challenge/Pods-Code Challenge.release.xcconfig"; sourceTree = "<group>"; };
 		93053E5D550EE23F73428E12 /* Pods-Code ChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Code ChallengeTests.release.xcconfig"; path = "Target Support Files/Pods-Code ChallengeTests/Pods-Code ChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 		FA26D7F69B3A88547AAFDEF0 /* Pods_Code_ChallengeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Code_ChallengeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF18C44122BCF9CC00452B32 /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
+		FF18C44322BCFA4500452B32 /* ViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
 		FF1C81E022AE5F9600E8307A /* PMCountingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMCountingLabel.swift; sourceTree = "<group>"; };
 		FF1C81E222AE91E200E8307A /* PMTestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMTestAPI.swift; sourceTree = "<group>"; };
 		FF1C81E422AEAEEE00E8307A /* PMActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMActivity.swift; sourceTree = "<group>"; };
@@ -113,6 +117,7 @@
 		4A9E6C2D22AAEF000053A693 /* Code Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				FF18C44022BCF99800452B32 /* Protocols */,
 				FF1C81EB22AEBA2F00E8307A /* Constants */,
 				FF1C81E622AEB0D900E8307A /* Datalayer */,
 				FF1C81DF22AE5F7100E8307A /* Sub Classes */,
@@ -194,6 +199,15 @@
 				FA26D7F69B3A88547AAFDEF0 /* Pods_Code_ChallengeTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FF18C44022BCF99800452B32 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FF18C44122BCF9CC00452B32 /* RequestProtocol.swift */,
+				FF18C44322BCFA4500452B32 /* ViewProtocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		FF1C81DF22AE5F7100E8307A /* Sub Classes */ = {
@@ -389,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF1C81E822AEB0E900E8307A /* PMDataLayer.swift in Sources */,
+				FF18C44422BCFA4500452B32 /* ViewProtocol.swift in Sources */,
 				4A9E6C5322AAF01D0053A693 /* PMRequest.swift in Sources */,
 				FF1C81E522AEAEEE00E8307A /* PMActivity.swift in Sources */,
 				4A9E6C5A22AAF3260053A693 /* CreditReportInfo.swift in Sources */,
@@ -401,6 +416,7 @@
 				FF1C81EA22AEB7D900E8307A /* PMCodingChallengeConstants.swift in Sources */,
 				FF1C81E122AE5F9600E8307A /* PMCountingLabel.swift in Sources */,
 				4A9E6C5B22AAF3260053A693 /* BaseModel.swift in Sources */,
+				FF18C44222BCF9CC00452B32 /* RequestProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

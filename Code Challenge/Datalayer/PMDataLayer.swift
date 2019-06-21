@@ -12,32 +12,31 @@ import UIKit
 class PMDataLayer {
     
     //MARK:- Properties
-    let alert = PMAlertViewController()
-    var activity = PMActivity()
-    
+    var viewController: ViewController?
+
     //MARK:- Helper
-    func bindDataToView(viewController: UIViewController, mainViewHolder: PMDataHolderView){
+    func bindDataToView(){
         
         // only add the activity if we can unwrap the navigation controller else just continue.
-        if let navigation =  viewController.navigationController{
+        if let navigation =  viewController?.navigationController{
             // create our activity indicator and add to the subview of our viewcontroller.
-            activity.setupView(txt: "Loading")
-            activity.viewcontroller = viewController
-            navigation.view.addSubview(activity)
-            activity.edgesToSuperview()
+            viewController?.activity.setupView(txt: "Loading")
+            // viewController property should already be set
+            navigation.view.addSubview(viewController!.activity)
+            viewController?.activity.edgesToSuperview()
         }
        
         // make our request to the get the credit info
-        PMAPiRequestHandler().getCreditInfo(viewcontroller: viewController) { [weak self] (base, error) in
+        viewController?.request.getCreditInfo() { [weak self] (base, error) in
             
             // handle retain cycles
             if let weakSelf = self{
                 if error != nil{
                     DispatchQueue.main.async {
                         // present the relevant alert
-                        weakSelf.alert.serverError(viewController: viewController, body: error?.localizedDescription, title: errorAlertTitle)
+                        weakSelf.viewController?.alert.serverError(viewController: weakSelf.viewController, body: error?.localizedDescription, title: errorAlertTitle)
                         // clean up the activity view
-                        weakSelf.activity.dismissActivityView()
+                        weakSelf.viewController?.activity.dismissActivityView()
                     }
                     return
                 }
@@ -49,31 +48,31 @@ class PMDataLayer {
                             let castScoreToFloat = Float(mainCreditScore)
                             
                             // call the count function on the custom label to increment the counter to the given value from the API
-                            mainViewHolder.creditScore.count(fromValue: 1, to: castScoreToFloat, withDuration: TimeInterval(animationDuration), withAnimationType: .EaseOut, withCounterType: .Int)
+                            weakSelf.viewController?.mainViewHolder.creditScore.count(fromValue: 1, to: castScoreToFloat, withDuration: TimeInterval(animationDuration), withAnimationType: .EaseOut, withCounterType: .Int)
                             
                             // now to add our progress indicator values
                             let progressIndicator =  maxScore / mainCreditScore
-                            mainViewHolder.circleProgress(value: Float(progressIndicator))
+                            weakSelf.viewController?.mainViewHolder.circleProgress(value: Float(progressIndicator))
                             
                             // set the total value from the credit score
-                            mainViewHolder.creditPossibleLabel.text = "out of \(maxScore)"
+                            weakSelf.viewController?.mainViewHolder.creditPossibleLabel.text = "out of \(maxScore)"
                             
                         }else{
-                           weakSelf.alert.serverError(viewController: viewController, body: errorFetchingFromServer, title: errorAlertTitle)
+                           weakSelf.viewController?.alert.serverError(viewController: weakSelf.viewController, body: errorFetchingFromServer, title: errorAlertTitle)
                         }
                     }
                     
                 }else{
                     // get back to the main thread to present our alert
                     DispatchQueue.main.async { 
-                        weakSelf.alert.serverError(viewController: viewController, body: error?.localizedDescription, title: errorAlertTitle)
+                        weakSelf.viewController?.alert.serverError(viewController: weakSelf.viewController, body: error?.localizedDescription, title: errorAlertTitle)
                     }
                 }
                 
                 // return to the main thread to clean up the activity inidicator
                 DispatchQueue.main.async {
                     // clean up the activity view
-                    weakSelf.activity.dismissActivityView()
+                    weakSelf.viewController?.activity.dismissActivityView()
                 }
             }
         }

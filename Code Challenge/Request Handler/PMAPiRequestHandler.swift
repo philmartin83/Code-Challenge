@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-class PMAPiRequestHandler{
+class PMAPiRequestHandler: RequestProtocol{
     
     //MARK:- Constant
-    let alert = PMAlertViewController()
+    var viewcontroller: ViewController?
     
-    func getCreditInfo(viewcontroller: UIViewController, completion: @escaping ((BaseModel?, Error?)-> ())){
+    func getCreditInfo(completion: @escaping ((BaseModel?, Error?)-> ())){
         // both items in this completion are optional so I can handle the errors in the viewcontroller
         // you can just use the dataTask(with: <url>) here but most requests need stuff added to the body or heades for security so I always use (with: URLRequest)
         URLSession.shared.dataTask(with: PMRequest().creditRequest()) { (data, response, error) in
@@ -31,25 +31,25 @@ class PMAPiRequestHandler{
                             completion(base, nil)
                         }catch{
                             // catch the error and present the alert
-                            self.alert.serverError(viewController: viewcontroller, body: error.localizedDescription, title: errorAlertTitle)
+                            self.viewcontroller?.alert.serverError(viewController: self.viewcontroller, body: error.localizedDescription, title: errorAlertTitle)
                             completion(nil, error)
                         }
                        
                     }else{
                         // we end up here if the unwrapped data fails in other words its nil
                         let messge = "Inalid data from the server."
-                        self.alert.serverError(viewController: viewcontroller, body: messge, title: errorAlertTitle)
+                        self.viewcontroller?.alert.serverError(viewController: self.viewcontroller, body: messge, title: errorAlertTitle)
                         completion(nil, error)
                     }
                 }else{
                     // we end up here if the response status code fromt eh server is a 400, 404 or any other status code SAD TIMEs :(
                     let messge = "\(error?.localizedDescription ?? "") \nStatus: \(httpResponse.statusCode)"
-                    self.alert.serverError(viewController: viewcontroller, body: messge, title: errorAlertTitle)
+                    self.viewcontroller?.alert.serverError(viewController: self.viewcontroller, body: messge, title: errorAlertTitle)
                     completion(nil, error)
                 }
             }else{
                 // we end up here if everything has gone totally wrong!!! in this instance maybe we should crash and report back using a tool like Crashlytics or Rollbar
-                self.alert.serverError(viewController: viewcontroller, body: error?.localizedDescription, title: errorAlertTitle)
+                self.viewcontroller?.alert.serverError(viewController: self.viewcontroller, body: error?.localizedDescription, title: errorAlertTitle)
                 completion(nil, error)
             }
         }.resume()
