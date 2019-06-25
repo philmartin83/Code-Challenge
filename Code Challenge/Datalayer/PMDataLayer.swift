@@ -28,7 +28,6 @@ class PMDataLayer {
        
         // make our request to the get the credit info
         viewController?.request.getCreditInfo() { [weak self] (base, error) in
-            
             // handle retain cycles
             if let weakSelf = self{
                 if error != nil{
@@ -40,41 +39,39 @@ class PMDataLayer {
                     }
                     return
                 }
-                if let base = base{
-                    // get back to the main thread to update our label progress bar and incrementing label
-                    DispatchQueue.main.async {
-                        // cast the score to float to handle my counter function
-                        if let mainCreditScore = base.creditReportInfo?.score, let maxScore = base.creditReportInfo?.maxScoreValue{
-                            let castScoreToFloat = Float(mainCreditScore)
-                            
-                            // call the count function on the custom label to increment the counter to the given value from the API
-                            weakSelf.viewController?.mainViewHolder.creditScore.count(fromValue: 1, to: castScoreToFloat, withDuration: TimeInterval(animationDuration), withAnimationType: .EaseOut, withCounterType: .Int)
-                            
-                            // now to add our progress indicator values
-                            let progressIndicator =  maxScore / mainCreditScore
-                            weakSelf.viewController?.mainViewHolder.circleProgress(value: Float(progressIndicator))
-                            
-                            // set the total value from the credit score
-                            weakSelf.viewController?.mainViewHolder.creditPossibleLabel.text = "out of \(maxScore)"
-                            
-                        }else{
-                           weakSelf.viewController?.alert.serverError(viewController: weakSelf.viewController, body: errorFetchingFromServer, title: errorAlertTitle)
-                        }
-                    }
-                    
-                }else{
-                    // get back to the main thread to present our alert
-                    DispatchQueue.main.async { 
-                        weakSelf.viewController?.alert.serverError(viewController: weakSelf.viewController, body: error?.localizedDescription, title: errorAlertTitle)
-                    }
-                }
-                
                 // return to the main thread to clean up the activity inidicator
                 DispatchQueue.main.async {
                     // clean up the activity view
                     weakSelf.viewController?.activity.dismissActivityView()
                 }
+                guard let base = base else{
+                    // get back to the main thread to present our alert
+                    DispatchQueue.main.async {
+                        weakSelf.viewController?.alert.serverError(viewController: weakSelf.viewController, body: error?.localizedDescription, title: errorAlertTitle)
+                    }
+                    return
+                }
+                    // get back to the main thread to update our label progress bar and incrementing label
+                    DispatchQueue.main.async {
+                        // cast the score to float to handle my counter function
+                        guard let mainCreditScore = base.creditReportInfo?.score, let maxScore = base.creditReportInfo?.maxScoreValue else{
+                             weakSelf.viewController?.alert.serverError(viewController: weakSelf.viewController, body: errorFetchingFromServer, title: errorAlertTitle)
+                            return
+                        }
+                        let castScoreToFloat = Float(mainCreditScore)
+                        
+                        // call the count function on the custom label to increment the counter to the given value from the API
+                        weakSelf.viewController?.mainViewHolder.creditScore.count(fromValue: 1, to: castScoreToFloat, withDuration: TimeInterval(animationDuration), withAnimationType: .EaseOut, withCounterType: .Int)
+                        
+                        // now to add our progress indicator values
+                        let progressIndicator =  maxScore / mainCreditScore
+                        weakSelf.viewController?.mainViewHolder.circleProgress(value: Float(progressIndicator))
+                        
+                        // set the total value from the credit score
+                        weakSelf.viewController?.mainViewHolder.creditPossibleLabel.text = "out of \(maxScore)"
+                    }
+                    
+                }
             }
-        }
     }
 }

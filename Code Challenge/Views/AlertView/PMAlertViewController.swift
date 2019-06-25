@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class PMAlertViewController: UIAlertController {
+class PMAlertViewController {
 
     // again in a normal app you may require multiple alerts and some may be custom so I put all alerts in its own class. Again I'm doing this code challenge based on how I would program a normal app
     internal func presentAlert(title: String, body: String?) -> UIAlertController{
