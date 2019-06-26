@@ -21,7 +21,7 @@
 		4A9E6C5A22AAF3260053A693 /* CreditReportInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C5722AAF3260053A693 /* CreditReportInfo.swift */; };
 		4A9E6C5B22AAF3260053A693 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C5822AAF3260053A693 /* BaseModel.swift */; };
 		4A9E6C5C22AAF3260053A693 /* CoachingSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C5922AAF3260053A693 /* CoachingSummary.swift */; };
-		4A9E6C5F22AAF43C0053A693 /* PMAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C5E22AAF43C0053A693 /* PMAlertViewController.swift */; };
+		4A9E6C5F22AAF43C0053A693 /* PMAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E6C5E22AAF43C0053A693 /* PMAlertView.swift */; };
 		FF18C44222BCF9CC00452B32 /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF18C44122BCF9CC00452B32 /* RequestProtocol.swift */; };
 		FF18C44422BCFA4500452B32 /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF18C44322BCFA4500452B32 /* ViewProtocol.swift */; };
 		FF1C81E122AE5F9600E8307A /* PMCountingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1C81E022AE5F9600E8307A /* PMCountingLabel.swift */; };
@@ -61,7 +61,7 @@
 		4A9E6C5722AAF3260053A693 /* CreditReportInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditReportInfo.swift; sourceTree = "<group>"; };
 		4A9E6C5822AAF3260053A693 /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		4A9E6C5922AAF3260053A693 /* CoachingSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoachingSummary.swift; sourceTree = "<group>"; };
-		4A9E6C5E22AAF43C0053A693 /* PMAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMAlertViewController.swift; sourceTree = "<group>"; };
+		4A9E6C5E22AAF43C0053A693 /* PMAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMAlertView.swift; sourceTree = "<group>"; };
 		527AA6B43E1886EC3C2409F4 /* Pods-Code Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Code Challenge.release.xcconfig"; path = "Target Support Files/Pods-Code Challenge/Pods-Code Challenge.release.xcconfig"; sourceTree = "<group>"; };
 		93053E5D550EE23F73428E12 /* Pods-Code ChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Code ChallengeTests.release.xcconfig"; path = "Target Support Files/Pods-Code ChallengeTests/Pods-Code ChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 		FA26D7F69B3A88547AAFDEF0 /* Pods_Code_ChallengeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Code_ChallengeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,7 +166,7 @@
 		4A9E6C5D22AAF4240053A693 /* AlertView */ = {
 			isa = PBXGroup;
 			children = (
-				4A9E6C5E22AAF43C0053A693 /* PMAlertViewController.swift */,
+				4A9E6C5E22AAF43C0053A693 /* PMAlertView.swift */,
 			);
 			path = AlertView;
 			sourceTree = "<group>";
@@ -407,7 +407,7 @@
 				4A9E6C5322AAF01D0053A693 /* PMRequest.swift in Sources */,
 				FF1C81E522AEAEEE00E8307A /* PMActivity.swift in Sources */,
 				4A9E6C5A22AAF3260053A693 /* CreditReportInfo.swift in Sources */,
-				4A9E6C5F22AAF43C0053A693 /* PMAlertViewController.swift in Sources */,
+				4A9E6C5F22AAF43C0053A693 /* PMAlertView.swift in Sources */,
 				4A9E6C3122AAEF000053A693 /* ViewController.swift in Sources */,
 				4A9E6C5122AAEF280053A693 /* PMAPiRequestHandler.swift in Sources */,
 				4A9E6C5C22AAF3260053A693 /* CoachingSummary.swift in Sources */,

@@ -12,7 +12,7 @@ import TinyConstraints
 class ViewController: UIViewController {
     
     let mainViewHolder = PMDataHolderView()
-    let alert = PMAlertViewController()
+    let alert = PMAlertView()
     let request = PMAPiRequestHandler()
     var activity = PMActivity()
     let dataLayer = PMDataLayer()
@@ -27,8 +27,6 @@ class ViewController: UIViewController {
         mainViewHolder.centerY(to: view)
         
         dataLayer.viewController = self
-        request.viewcontroller = self
-        
         dataLayer.bindDataToView()
     }
 }

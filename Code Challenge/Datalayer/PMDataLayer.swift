@@ -12,7 +12,7 @@ import UIKit
 class PMDataLayer {
     
     //MARK:- Properties
-    var viewController: ViewController?
+    weak var viewController: ViewController?
 
     //MARK:- Helper
     func bindDataToView(){
@@ -30,20 +30,19 @@ class PMDataLayer {
         viewController?.request.getCreditInfo() { [weak self] (base, error) in
             // handle retain cycles
             if let weakSelf = self{
-                if error != nil{
-                    DispatchQueue.main.async {
-                        // present the relevant alert
-                        weakSelf.viewController?.alert.serverError(viewController: weakSelf.viewController, body: error?.localizedDescription, title: errorAlertTitle)
-                        // clean up the activity view
-                        weakSelf.viewController?.activity.dismissActivityView()
-                    }
-                    return
-                }
                 // return to the main thread to clean up the activity inidicator
                 DispatchQueue.main.async {
                     // clean up the activity view
                     weakSelf.viewController?.activity.dismissActivityView()
                 }
+                if error != nil{
+                    DispatchQueue.main.async {
+                        // present the relevant alert
+                        weakSelf.viewController?.alert.serverError(viewController: weakSelf.viewController, body: error?.localizedDescription, title: errorAlertTitle)
+                    }
+                    return
+                }
+               
                 guard let base = base else{
                     // get back to the main thread to present our alert
                     DispatchQueue.main.async {
