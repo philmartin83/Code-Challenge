@@ -10,7 +10,7 @@ import XCTest
 @testable import Code_Challenge
 
 class Code_ChallengeTests: XCTestCase {
-    let alert = PMAlertViewController()
+    let alert = PMAlertView()
     
     func testFunctionalAlert(){
         let result = alert.presentAlert(title: "Error", body: "message body")
@@ -22,23 +22,23 @@ class Code_ChallengeTests: XCTestCase {
         let badResult = alert.presentAlert(title: "Error", body: nil)
         XCTAssertEqual(badResult.message, nil)
         
-        let vc = UIViewController()
-        let testServerError = PMAlertViewController()
-        testServerError.serverError(viewController: vc, body: "Some error", title: "hello error")
-        XCTAssertNil(testServerError.message)
-        XCTAssertNil(testServerError.title)
     }
     
     func testDataHolderViewTitleClosure(){
-        let title = PMDataHolderView()
-        XCTAssertEqual(title.titleLabel.text, "Your credit score is")
-        title.circleProgress(value: 20)
-        XCTAssertEqual(title.progress, 20)
+        let presenter = HomePresenter()
+        let vc = ViewController()
+        presenter.controller = vc
+        XCTAssertEqual(presenter.titleLabel.text, "Your credit score is")
+        presenter.circleProgress(value: 20)
+        XCTAssertEqual(presenter.progress, 20)
     }
     
     func testBindingOfData(){
-        let holderView = PMDataHolderView()
-        let dataBind = PMDataLayer()
+        let vc = ViewController()
+        let holderView = HomePresenter()
+        let dataBind = HomeNetworking()
+        dataBind.controller = vc
+        holderView.controller = vc
         dataBind.bindDataToView()
         XCTAssertNotNil(holderView.titleLabel)
     }

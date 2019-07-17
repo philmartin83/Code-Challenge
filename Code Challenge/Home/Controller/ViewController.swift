@@ -7,27 +7,25 @@
 //
 
 import UIKit
-import TinyConstraints
 
 class ViewController: UIViewController {
     
-    let mainViewHolder = PMDataHolderView()
+    let mainViewHolder = HomePresenter()
     let alert = PMAlertView()
     let request = PMAPiRequestHandler()
     var activity = PMActivity()
-    let dataLayer = PMDataLayer()
+    let networking = HomeNetworking()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         title = "Dashboard"
         // set the status bar to light so the status bar doesn't clash with our black nav bar!
         navigationController?.navigationBar.barStyle = .black
-        view.addSubview(mainViewHolder)
-        mainViewHolder.centerX(to: view)
-        mainViewHolder.centerY(to: view)
+        mainViewHolder.controller = self
+        mainViewHolder.setupView()
         
-        dataLayer.viewController = self
-        dataLayer.bindDataToView()
+        networking.controller = self
+        networking.bindDataToView()
     }
 }
 
