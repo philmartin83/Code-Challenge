@@ -1,4 +1,4 @@
-# Demo Project
+# Code Challenge
 
 This is a small demo of my coding style as of Swift 5, inside the project I make a basic request and get a response and map using the codeable protocal.
 
